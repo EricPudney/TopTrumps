@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="top-trumps.css">
+  <title>Top Trumps</title>
+
+</head>
+
+<body>
+
+    <button id="start">Play Top Trumps!</button>
+
+    <!--html code for form & button approach, if needed later
+    <form>
+        <label id="lbl" for="players">Select number of players (between 2 and 4):</label>
+        <input type="number" id="players" min="2" max="4">
+    </form>
+    <button id="confirm" onclick="confirm()">Confirm</button>
+    -->
+<h1 id="head">Choose a category:</h1>
+<img id="cardDisplay">
+<div style="display: flex;">
+    <button class="selector" id="ps" onclick="psChosen()">Physical Strength</button>
+    <button class="selector" id="ff" onclick="ffChosen()">Fear Factor</button>
+    <button class="selector" id="kp" onclick="kpChosen()">Killing Power</button>
+    <button class="selector" id="hr" onclick="hrChosen()">Horror Rating</button>
+</div>
+    <script src="top-trumps.js"></script>
+</body>
+
+</html>
