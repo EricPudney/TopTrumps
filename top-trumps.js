@@ -41,6 +41,7 @@ for (let i = deck.length - 1; i > 0; i--) {
     deck[i] = deck[j];
     deck[j] = k;
 }
+console.log("Deck shuffled");
 
 //creates (empty) hands for up to 4 players
 const player1Hand = [];
@@ -64,7 +65,7 @@ function initiate() {
     let players = prompt("How many players (2, 3 or 4)?", 2);
     if (Number(players) > 1 && Number(players) < 5) {
         document.getElementById("start").style.display = "none";
-        noOfPlayers = players;
+        noOfPlayers = Number(players);
         //deals the cards to 2-4 players
         while (deck.length > 0) {
             player1Hand.push(deck.pop());
@@ -77,23 +78,21 @@ function initiate() {
             if (noOfPlayers === 3) { continue; }
             player4Hand.push(deck.pop());
 
-            //start the game
-            document.getElementById("head").style.display = "block";
-            document.getElementById("cardDisplay").setAttribute("src", "/top-trumps/top-trumps-imgs/" + activePlayer[0].name + ".jpg");
-            document.getElementById("ps").style.display = "block";
-            document.getElementById("ff").style.display = "block";
-            document.getElementById("kp").style.display = "block";
-            document.getElementById("hr").style.display = "block";
         };
+        console.log("Cards dealt");
+        //start the game
+        document.getElementById("head").style.display = "block";
+        document.getElementById("cardDisplay").setAttribute("src", "/top-trumps/top-trumps-imgs/" + activePlayer[0].name + ".jpg");
+        document.getElementById("ps").style.display = "block";
+        document.getElementById("ff").style.display = "block";
+        document.getElementById("kp").style.display = "block";
+        document.getElementById("hr").style.display = "block";
     }
     else {
         alert("Please enter a numeral from 2-4.");
         initiate();
     }
 }
-
-//click to start
-document.getElementById("start").addEventListener("click", initiate);
 
 /*deals with a draw following compare () function
 function draw(a, b, c, d) {
@@ -102,7 +101,7 @@ function draw(a, b, c, d) {
 }*/
 
 //compares value of cards, pushes all cards to winner
-function compare(a, b, c = 0, d = 0) {
+function compare(a = 0, b = 0, c = 0, d = 0) {
     if (a > b && a > c && a > d) {
         winningPlayer = 1;
     }
@@ -115,6 +114,8 @@ function compare(a, b, c = 0, d = 0) {
     else if (d > a && d > b && d > c) {
         winningPlayer = 4;
     }
+    console.log("Cards compared: winner " + winningPlayer);
+
     //    else draw(a, b, c, d);
 }
 
@@ -128,15 +129,19 @@ function confirm() {
 function nextTurn() {
     if (winningPlayer === 1) {
         activePlayer = player1Hand;
+        winningPlayer = 0;
     }
     else if (winningPlayer === 2) {
         activePlayer = player2Hand;
+        winningPlayer = 0;
     }
     else if (winningPlayer === 3) {
         activePlayer = player3Hand;
+        winningPlayer = 0;
     }
     else if (winningPlayer === 4) {
         activePlayer = player4Hand;
+        winningPlayer = 0;
     }
     else { console.log("Error") }
     display();
@@ -153,47 +158,61 @@ function display() {
 }
 
 
-//identifies active cards, removes them from player hands, pushes them to winner
+//identifies active cards, removes them from player hands
 function cardPile() {
     activeCards.push(player1Hand[0])
     player1Hand.splice(0, 1);
     activeCards.push(player2Hand[0])
     player2Hand.splice(0, 1);
+    console.log(activeCards);
     if (noOfPlayers === 3) {
         activeCards.push(player3Hand[0])
         player3Hand.splice(0, 1);
+        console.log(activeCards);
     }
     else if (noOfPlayers === 4) {
+        activeCards.push(player3Hand[0])
+        player3Hand.splice(0, 1);
         activeCards.push(player4Hand[0])
         player4Hand.splice(0, 1);
+        console.log(activeCards);
     }
-    switch (winningPlayer) {
-        case 1:
-            for (i = 1; i < noOfPlayers; i++) {
-                player1Hand.push(activeCards[0]);
-                activeCards.splice(0, 1);
-            }
-        case 2:
-            for (i = 1; i < noOfPlayers; i++) {
-                player2Hand.push(activeCards[0]);
-                activeCards.splice(0, 1);
-            }
-        case 3:
-            for (i = 1; i < noOfPlayers; i++) {
-                player3Hand.push(activeCards[0]);
-                activeCards.splice(0, 1);
-            }
-        case 4:
-            for (i = 1; i < noOfPlayers; i++) {
-                player4Hand.push(activeCards[0]);
-                activeCards.splice(0, 1);
-            }
+}
+
+// pushes activeCards to winner 
+function redistributeCards() {
+    if (winningPlayer === 1) {
+        for (i = 1; i <= noOfPlayers; i++) {
+            player1Hand.push(activeCards[0]);
+            activeCards.splice(0, 1);
+        }
     }
+    else if (winningPlayer === 2) {
+        for (i = 1; i <= noOfPlayers; i++) {
+            player2Hand.push(activeCards[0]);
+            activeCards.splice(0, 1);
+        }
+    }
+    else if (winningPlayer === 3) {
+        for (i = 1; i <= noOfPlayers; i++) {
+            player3Hand.push(activeCards[0]);
+            activeCards.splice(0, 1);
+        }
+    }
+    else if (winningPlayer === 4) {
+        for (i = 1; i <= noOfPlayers; i++) {
+            player4Hand.push(activeCards[0]);
+            activeCards.splice(0, 1);
+        }
+    }
+
 }
 
 
 
-//run compare function based on active player's choice of category:
+
+//run compare function based on active player's choice of category: 
+// MORE EFFICIENT WAY TO DO THIS - BUTTONS ISOLATE CATEGORY AND 1 FUNCTION RUNS
 function psChosen() {
     switch (noOfPlayers) {
         case 2:
@@ -206,8 +225,9 @@ function psChosen() {
             compare(player1Hand[0].str, player2Hand[0].str, player3Hand[0].str, player4Hand[0].str);
             break;
     }
-    cardPile();
     alert("Player " + winningPlayer + " wins!")
+    cardPile();
+    redistributeCards();
     nextTurn();
 }
 
@@ -222,8 +242,10 @@ function ffChosen() {
         case 4:
             compare(player1Hand[0].ff, player2Hand[0].ff, player3Hand[0].ff, player4Hand[0].ff);
             break;
-    }cardPile();
-    alert("Player " + winningPlayer + " wins!")
+    }
+    cardPile();
+    alert("Player " + winningPlayer + " wins!");
+    redistributeCards();
     nextTurn();
 }
 
@@ -241,6 +263,7 @@ function kpChosen() {
     }
     cardPile();
     alert("Player " + winningPlayer + " wins!")
+    redistributeCards();
     nextTurn();
 }
 
@@ -255,58 +278,14 @@ function hrChosen() {
         case 4:
             compare(player1Hand[0].hr, player2Hand[0].hr, player3Hand[0].hr, player4Hand[0].hr);
             break;
+        default:
+            console.log("error - noOfPlayers not working");
     }
     cardPile();
     alert("Player " + winningPlayer + " wins!")
+    redistributeCards();
     nextTurn();
 }
 
-
-
-
-/* if loop - didn't really work that well
-if (noOfPlayers ===4){
-    for (let i = deck.length; i > 0; i--) {
-        currentReceiver +=1;
-        if (currentReceiver === 1) {
-            player1Hand.push(deck[i]);
-        }
-        else if (currentReceiver === 2) {
-            player2Hand.push(deck[i]);
-        }
-        else if (currentReceiver === 3) {
-            player3Hand.push(deck[i]);
-        }
-        else {
-            player4Hand.push(deck[i]);
-            currentReceiver = 0;
-        }
-    }
-}
-else if (noOfPlayers ===3){
-    for (let i = deck.length; i > 0; i--) {
-        currentReceiver +=1;
-        if (currentReceiver === 1) {
-            player1Hand.push(deck[i]);
-        }
-        else if (currentReceiver === 2) {
-            player2Hand.push(deck[i]);
-        }
-        else {
-            player3Hand.push(deck[i]);
-            currentReceiver = 0;
-        }
-    }
-}
-else {
-    for (let i = deck.length; i > 0; i--) {
-        currentReceiver +=1;
-        if (currentReceiver === 1) {
-            player1Hand.push(deck[i]);
-        }
-        else {
-            player2Hand.push(deck[i]);
-            currentReceiver = 0;
-        }
-    }
-}*/
+//click to start
+document.getElementById("start").addEventListener("click", initiate);
