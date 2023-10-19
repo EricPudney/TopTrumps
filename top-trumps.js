@@ -42,7 +42,7 @@ for (let i = deck.length - 1; i > 0; i--) {
     deck[j] = k;
 }
 
-//creates (empty) hands for up to 4 players
+//creates (empty) hands for up to 4 players, strings for names
 const player1Hand = [];
 const player2Hand = [];
 const player3Hand = [];
@@ -51,7 +51,10 @@ let player1 = "";
 let player2 = "";
 let player3 = "";
 let player4 = "";
-
+let p1isOut = false;
+let p2isOut = false;
+let p3isOut = false;
+let p4isOut = false;
 
 /*establishes no of players, sets player 1 to start, creates array to be used for cards in play 
 and 'rollover' cards in case of a draw; sets default isDraw value to false */
@@ -61,6 +64,7 @@ const rolloverCards = [];
 let isDraw = false;
 let winningPlayer = 0;
 let noOfPlayers = 0;
+let playersOut = 0;
 
 //requests number of players
 function initiate() {
@@ -68,10 +72,10 @@ function initiate() {
     document.getElementById("players").style.display = "block";
     document.getElementById("lbl").style.display = "block";
     document.getElementById("confirm").style.display = "block"; */
+    document.getElementById("start").style.display = "none";
     noOfPlayers = Number(prompt("How many players (2, 3 or 4)?"));
-//checks valid number of players entered and records player names
+    //checks valid number of players entered and records player names
     if (noOfPlayers > 1 && noOfPlayers < 5) {
-        document.getElementById("start").style.display = "none";
         player1 = prompt("Enter name of player 1");
         player2 = prompt("Enter name of player 2");
         if (noOfPlayers > 2) {
@@ -80,7 +84,7 @@ function initiate() {
         if (noOfPlayers > 3) {
             player4 = prompt("Enter name of player 4");
         }
-//deals the cards to 2-4 players
+        //deals the cards to 2-4 players
         while (deck.length > 0) {
             player1Hand.push(deck.pop());
             if (deck.length === 0) { break; }
@@ -92,14 +96,13 @@ function initiate() {
             if (noOfPlayers === 3) { continue; }
             player4Hand.push(deck.pop());
         };
-//starts the game
-        document.getElementById("head").style.display = "block";
+        //starts the game
+        document.getElementById("head").innerHTML = player1 + " to start! Choose a category.";
         document.getElementById("cardDisplay").setAttribute("src", "/top-trumps/top-trumps-imgs/" + activePlayer[0].name + ".jpg");
         document.getElementById("ps").style.display = "block";
         document.getElementById("ff").style.display = "block";
         document.getElementById("kp").style.display = "block";
         document.getElementById("hr").style.display = "block";
-        alert(player1 + " to start!");
     }
     else {
         alert("Please enter a numeral from 2-4.");
@@ -161,20 +164,23 @@ function nextTurn() {
     if (winningPlayer === 1) {
         activePlayer = player1Hand;
         winningPlayer = 0;
+        document.getElementById("head").innerHTML = player1 + "'s turn: choose a category.";
     }
     else if (winningPlayer === 2) {
         activePlayer = player2Hand;
         winningPlayer = 0;
+        document.getElementById("head").innerHTML = player2 + "'s turn: choose a category.";
     }
     else if (winningPlayer === 3) {
         activePlayer = player3Hand;
         winningPlayer = 0;
+        document.getElementById("head").innerHTML = player3 + "'s turn: choose a category.";
     }
     else if (winningPlayer === 4) {
         activePlayer = player4Hand;
         winningPlayer = 0;
+        document.getElementById("head").innerHTML = player4 + "'s turn: choose a category.";
     }
-    else { console.log("Error") }
     display();
 }
 
@@ -215,31 +221,32 @@ function redistributeCards() {
     while (rolloverCards.length > 0) {
         activeCards.push(rolloverCards.pop());
     }
-    
+
     if (winningPlayer === 1) {
-        for (i = 0; i <= activeCards.length; i++) {
+        while (activeCards.length > 0) {
             player1Hand.push(activeCards[0]);
             activeCards.splice(0, 1);
         }
     }
     else if (winningPlayer === 2) {
-        for (i = 0; i <= activeCards.length; i++) {
+        while (activeCards.length > 0) {
             player2Hand.push(activeCards[0]);
             activeCards.splice(0, 1);
         }
     }
     else if (winningPlayer === 3) {
-        for (i = 0; i <= activeCards.length; i++) {
+        while (activeCards.length > 0) {
             player3Hand.push(activeCards[0]);
             activeCards.splice(0, 1);
         }
     }
     else if (winningPlayer === 4) {
-        for (i = 0; i <= activeCards.length; i++) {
+        while (activeCards.length > 0) {
             player4Hand.push(activeCards[0]);
             activeCards.splice(0, 1);
         }
     }
+    else { console.log("error - winning player value not 1-4.") }
 }
 
 //ends the game
@@ -253,7 +260,7 @@ function endGame(winner) {
     document.getElementById("hr").style.display = "none";
 }
 
-//check to see if any player is down to 0 cards: works for 1p games
+//check to see if any player is down to 0 cards / the game is over
 function checkDefeat() {
     switch (noOfPlayers) {
         case 2:
@@ -264,15 +271,56 @@ function checkDefeat() {
                 endGame(player1);
             }
             break;
-        //  case 3:
-
-        //  case 4:
+        case 3:
+            if (player1Hand.length === 0 && p1isOut === false) {
+                p1isOut = true;
+                playersOut += 1;
+            }
+            if (player2Hand.length === 0 && p2isOut === false) {
+                p2isOut = true;
+                playersOut += 1;
+            }
+            if (player3Hand.length === 0 && p3isOut === false) {
+                p3isOut = true;
+                playersOut += 1;
+            }
+            if (playersOut === 2) {
+                if (p1isOut === false) { endGame(player1); }
+                else if (p2isOut === false) { endGame(player2); }
+                else if (p3isOut === false) { endGame(player3); }
+                else { console.log("Error in determining winner."); }
+            }
+        case 4:
+            if (player1Hand.length === 0 && p1isOut === false) {
+                p1isOut = true;
+                playersOut += 1;
+            }
+            if (player2Hand.length === 0 && p2isOut === false) {
+                p2isOut = true;
+                playersOut += 1;
+            }
+            if (player3Hand.length === 0 && p3isOut === false) {
+                p3isOut = true;
+                playersOut += 1;
+            }
+            if (player4Hand.length === 0 && p4isOut === false) {
+                p4isOut = true;
+                playersOut += 1;
+            }
+            if (playersOut === 3) {
+                if (p1isOut === false) { endGame(player1); }
+                else if (p2isOut === false) { endGame(player2); }
+                else if (p3isOut === false) { endGame(player3); }
+                else if (p4isOut === false) { endGame(player4); }
+                else { console.log("Error in determining winner."); }
+            }
 
     }
 
 }
 
-//run compare function based on active player's choice of category: 
+//run compare function based on active player's choice of category, then follows 
+//up with functions to carry out the rest of the round and start again. 
 // MORE EFFICIENT WAY TO DO THIS - BUTTONS ISOLATE CATEGORY AND 1 FUNCTION RUNS??
 function psChosen() {
     switch (noOfPlayers) {
@@ -288,9 +336,9 @@ function psChosen() {
     }
     if (isDraw = true) {
         isDraw = false;
+        alert("It's a draw! Choose again.");
         return;
     }
-    alert("Player " + winningPlayer + " wins!")
     cardPile();
     redistributeCards();
     checkDefeat();
@@ -311,10 +359,10 @@ function ffChosen() {
     }
     if (isDraw = true) {
         isDraw = false;
+        alert("It's a draw! Choose again.");
         return;
     }
     cardPile();
-    alert("Player " + winningPlayer + " wins!");
     redistributeCards();
     checkDefeat();
     nextTurn();
@@ -334,16 +382,18 @@ function kpChosen() {
     }
     if (isDraw = true) {
         isDraw = false;
+        alert("It's a draw! Choose again.");
         return;
     }
     cardPile();
-    alert("Player " + winningPlayer + " wins!")
     redistributeCards();
     checkDefeat();
     nextTurn();
 }
 
+
 function hrChosen() {
+    getValues(hr);
     switch (noOfPlayers) {
         case 2:
             compare(player1Hand[0].hr, player2Hand[0].hr);
@@ -359,10 +409,10 @@ function hrChosen() {
     }
     if (isDraw === true) {
         isDraw = false;
+        alert("It's a draw! Choose again.");
         return;
     }
     cardPile();
-    alert("Player " + winningPlayer + " wins!")
     redistributeCards();
     checkDefeat();
     nextTurn();
@@ -370,3 +420,57 @@ function hrChosen() {
 
 //click to start
 document.getElementById("start").addEventListener("click", initiate);
+
+
+// CONTINUE WORKING ON THIS!!!
+/*function getValues(score){
+
+
+switch (noOfPlayers) {
+    case 2:
+        compare(player1Hand[0].score, player2Hand[0].score);
+        break;
+    case 3:
+        if (playersOut === 1){
+            if (p1isOut = true) {
+                compare (player2Hand[0].score, player3Hand[0].score);
+            }
+            else if (p2isOut = true) {
+                compare (player1Hand[0].score, player3Hand[0].score);
+            }
+            else if (p3isOut = true) {
+                compare (player1Hand[0].score, player2Hand[0].score);
+            }
+            else {console.log("something went wrong with playersOut")}
+        }
+        else {compare(player1Hand[0].score, player2Hand[0].score, player3Hand[0].score);}
+        break;
+    case 4:
+        switch (playersOut) {
+            case 0: {
+                compare(player1Hand[0].score, player2Hand[0].score, player3Hand[0].score, player4Hand[0].score);
+                break;
+            }
+            case 1: {
+                if (p1isOut = true){
+                    compare(player2Hand[0].score, player3Hand[0].score, player4Hand[0].score);
+                }
+                else if (p2isOut = true) {
+                    compare(player1Hand[0].score, player3Hand[0].score, player4Hand[0].score);
+                }
+                else if (p3isOut = true) {
+                    compare(player1Hand[0].score, player2Hand[0].score, player4Hand[0].score);
+                }
+                else if (p4isOut = true) {
+                    compare(player1Hand[0].score, player2Hand[0].score, player3Hand[0].score);
+                }
+                break;
+            }
+            case 2: {
+                break;
+            }
+            default: {console.log("error in playersOut (4 players)");}
+        }
+        
+}
+}
