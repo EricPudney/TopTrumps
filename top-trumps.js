@@ -42,7 +42,7 @@ for (let i = deck.length - 1; i > 0; i--) {
     deck[j] = k;
 }
 
-//creates (empty) hands for up to 4 players, strings for names
+//creates (empty) hands for up to 4 players, strings for names, default no of active players = 2
 const player1Hand = [];
 const player2Hand = [];
 const player3Hand = [];
@@ -56,8 +56,8 @@ let p2isOut = false;
 let p3isOut = true;
 let p4isOut = true;
 
-/*establishes no of players, sets player 1 to start, creates array to be used for cards in play 
-and 'rollover' cards in case of a draw; sets default isDraw value to false */
+/*sets player 1 to start, creates array to be used for cards in play and 
+'rollover' cards in case of a draw; sets default isDraw value to false */
 let activePlayer = player1Hand;
 const activeCards = [];
 const rolloverCards = [];
@@ -66,16 +66,16 @@ let winningPlayer = 0;
 let noOfPlayers = 0;
 let playersOut = 0;
 
-//requests number of players
+//requests number of players when start button clicked
 function initiate() {
     /*js code for form and button approach, if used later
     document.getElementById("players").style.display = "block";
     document.getElementById("lbl").style.display = "block";
     document.getElementById("confirm").style.display = "block"; */
-    document.getElementById("start").style.display = "none";
-    noOfPlayers = Number(prompt("How many players (2, 3 or 4)?"));
+    noOfPlayers = parseInt(prompt("How many players (2, 3 or 4)?"));
     //checks valid number of players entered and records player names
     if (noOfPlayers > 1 && noOfPlayers < 5) {
+        document.getElementById("start").style.display = "none";
         player1 = prompt("Enter name of player 1");
         player2 = prompt("Enter name of player 2");
         if (noOfPlayers > 2) {
@@ -106,7 +106,7 @@ function initiate() {
         document.getElementById("kp").style.display = "block";
         document.getElementById("hr").style.display = "block";
     }
-    else {
+    else if (noOfPlayers !== null) {
         alert("Please enter a numeral from 2-4.");
         initiate();
     }

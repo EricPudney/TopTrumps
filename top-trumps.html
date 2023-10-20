@@ -2,16 +2,16 @@
 <html lang="en-us">
 
 <head>
-  <meta charset="utf-8">
-  <link rel="stylesheet" href="top-trumps.css">
-  <title>Top Trumps</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="top-trumps.css">
+    <title>Top Trumps</title>
 
 </head>
 
 <body>
-
-    <button id="start">Play Top Trumps!</button>
-
+    <div class="centred">
+        <button id="start"></button>
+    </div>
     <!--html code for form & button approach, if needed later
     <form>
         <label id="lbl" for="players">Select number of players (between 2 and 4):</label>
@@ -19,14 +19,16 @@
     </form>
     <button id="confirm" onclick="confirm()">Confirm</button>
     -->
-<h1 id="head"></h1>
-<img id="cardDisplay">
-<div style="display: flex;">
-    <button class="selector" id="ps" onclick="psChosen()">Physical Strength</button>
-    <button class="selector" id="ff" onclick="ffChosen()">Fear Factor</button>
-    <button class="selector" id="kp" onclick="kpChosen()">Killing Power</button>
-    <button class="selector" id="hr" onclick="hrChosen()">Horror Rating</button>
-</div>
+    <div id="display-area">
+        <h1 id="head"></h1>
+        <img id="cardDisplay">
+        <div id="button-holder">
+            <button class="selector" id="ps" onclick="psChosen()">Physical Strength</button>
+            <button class="selector" id="ff" onclick="ffChosen()">Fear Factor</button>
+            <button class="selector" id="kp" onclick="kpChosen()">Killing Power</button>
+            <button class="selector" id="hr" onclick="hrChosen()">Horror Rating</button>
+        </div>
+    </div>
     <script src="top-trumps.js"></script>
 </body>
 
