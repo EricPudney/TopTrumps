@@ -5,12 +5,15 @@
     <meta charset="utf-8">
     <link rel="stylesheet" href="top-trumps.css">
     <title>Top Trumps</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Metal+Mania&display=swap" rel="stylesheet">
 
 </head>
 
 <body>
     <div class="centred">
-        <button id="start"></button>
+        <button id="start">Play Top Trumps!</button>
     </div>
     <!--html code for form & button approach, if needed later
     <form>
@@ -21,6 +24,7 @@
     -->
     <div id="display-area">
         <h1 id="head"></h1>
+        <h1 id="end-msg"></h1>
         <img id="cardDisplay">
         <div id="button-holder">
             <button class="selector" id="ps" onclick="psChosen()">Physical Strength</button>

@@ -256,13 +256,14 @@ function redistributeCards() {
 
 //ends the game
 function endGame(winner) {
-    alert("The game is over. " + winner + " wins!");
     document.getElementById("head").style.display = "none";
     document.getElementById("cardDisplay").style.display = "none";
     document.getElementById("ps").style.display = "none";
     document.getElementById("ff").style.display = "none";
     document.getElementById("kp").style.display = "none";
     document.getElementById("hr").style.display = "none";
+    document.getElementById("end-msg").innerHTML = winner + " obliterated the oppositon BRUTALLY.";
+    document.getElementById("start").style.display = "block";
 }
 
 //check to see if any player is down to 0 cards / the game is over
