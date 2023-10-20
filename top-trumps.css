@@ -1,7 +1,57 @@
-/*#confirm, #players, #lbl{
-    display: none;
-}*/
+body {
+    background-image: url(top-trumps-imgs/horror.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+}
 
 .selector {
     display: none;
+    background-color: forestgreen;
+    width: 15vw;
+    height: 5vh;
+    padding: 0.2rem;
+    margin-left: 0.8rem;;
+}
+
+.selector:hover {
+    background-color: rgb(48, 97, 48);
+    cursor: pointer;
+}
+
+#head{
+    color: antiquewhite;
+}
+
+.centred {
+    display: flex;
+    margin-top: 30vh;    
+    justify-content: center;
+}
+
+#start{
+    width: 12vw;
+    height: 7vw;
+    font-size: x-large;
+    border: 0.5rem solid midnightblue;
+    background-image: url(top-trumps-imgs/ptt.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    cursor: pointer;
+    border-radius: 0.5rem;
+}
+
+#display-area{
+    position: absolute;
+    top: 10rem;
+    left:2rem;
+}
+
+#button-holder {
+    display: flex; 
+    flex-direction: column;
+    gap:0.5rem;
+}
+
+#cardDisplay {
+    margin-bottom: 3rem;
 }
