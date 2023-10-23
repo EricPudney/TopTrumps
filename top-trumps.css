@@ -43,25 +43,27 @@ body {
     font-size: 3rem;
     font-weight: bold;
     background-color: darkred;
-    border: 0.5rem solid rgb(3, 3, 43);
+    border: 0.2rem solid rgb(3, 3, 43);
     cursor: pointer;
     border-radius: 0.5rem;
 }
 
 #display-area {
     position: absolute;
-    top: 10rem;
-    left: 2rem;
+    top: 2rem;
+    width: 100vw;
 }
 
 #button-holder {
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
+    margin-top: 2rem;
+    grid-row: 2 / 3;
+    grid-column: 2 / 3;
 }
 
-#cardDisplay {
-    margin-bottom: 3rem;
+#p1cards {
     grid-column: 2 / 3;
 }
 
@@ -89,4 +91,22 @@ body {
 #cards {
     display: grid;
     grid-template-columns: 0.5fr 1fr 1fr 0.5fr;
+    gap: 1rem;
+    justify-content: center;
+}
+
+#cont-button {
+    display: none;
+    position: absolute;
+    bottom: 2rem;
+    left: 45vw;
+    background-color: darkgreen;
+    cursor: pointer;
+    width: 10rem;
+    height: 3rem;
+    font-size: 2rem;
+}
+
+#cont-button:hover {
+    background-color: lightgreen;
 }
