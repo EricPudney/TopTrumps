@@ -1,46 +1,49 @@
 //creates 32 cards in an array (the deck)
 const deck = [
     { name: "wolfman", str: 78, ff: 68, kp: 73, hr: 70 },
-    { name: "the-beast", str: 78, ff: 77, kp: 82, hr: 98 },
-    { name: "colossus", str: 78, ff: 80, kp: 87, hr: 71 },
-    { name: "thor", str: 78, ff: 90, kp: 97, hr: 68 },
-    { name: "slime-creature", str: 78, ff: 61, kp: 68, hr: 86 },
-    { name: "living-skull", str: 78, ff: 58, kp: 63, hr: 89 },
-    { name: "miss-vampire", str: 78, ff: 60, kp: 65, hr: 87 },
-    { name: "frankenstein", str: 78, ff: 75, kp: 82, hr: 75 },
-    { name: "alien", str: 78, ff: 58, kp: 65, hr: 97 },
-    { name: "fire-demon", str: 78, ff: 61, kp: 66, hr: 77 },
-    { name: "creature-lagoon", str: 77, ff: 66, kp: 73, hr: 79 },
-    { name: "cyclops", str: 78, ff: 74, kp: 79, hr: 74 },
-    { name: "zetan-priest", str: 78, ff: 84, kp: 91, hr: 95 },
-    { name: "death", str: 78, ff: 89, kp: 95, hr: 100 },
-    { name: "jailer", str: 78, ff: 59, kp: 66, hr: 69 },
-    { name: "devil-priest", str: 78, ff: 82, kp: 89, hr: 92 },
-    { name: "killer-rat", str: 78, ff: 60, kp: 67, hr: 79 },
-    { name: "zoltan", str: 78, ff: 72, kp: 77, hr: 84 },
-    { name: "lizard-man", str: 78, ff: 73, kp: 80, hr: 81 },
-    { name: "martian-warrior", str: 78, ff: 70, kp: 75, hr: 72 },
-    { name: "terror-of-the-deep", str: 78, ff: 67, kp: 72, hr: 77 },
-    { name: "venusian-death-cell", str: 78, ff: 69, kp: 74, hr: 98 },
-    { name: "the-mummy", str: 78, ff: 76, kp: 81, hr: 80 },
-    { name: "the-fiend", str: 78, ff: 71, kp: 78, hr: 80 },
-    { name: "talon", str: 78, ff: 62, kp: 67, hr: 76 },
-    { name: "dr-syn", str: 78, ff: 63, kp: 68, hr: 73 },
-    { name: "living-gargoyle", str: 77, ff: 62, kp: 69, hr: 85 },
-    { name: "the-sorceror", str: 78, ff: 65, kp: 72, hr: 83 },
-    { name: "diablo", str: 78, ff: 64, kp: 69, hr: 78 },
-    { name: "hunchback-notre-dame", str: 78, ff: 65, kp: 72, hr: 68 },
-    { name: "high-priestess-zoltan", str: 78, ff: 59, kp: 66, hr: 82 },
-    { name: "creature-outer-space", str: 78, ff: 69, kp: 76, hr: 78 },
+    { name: "the-beast", str: 87, ff: 77, kp: 82, hr: 98 },
+    { name: "colossus", str: 90, ff: 80, kp: 87, hr: 71 },
+    { name: "thor", str: 100, ff: 90, kp: 97, hr: 68 },
+    { name: "slime-creature", str: 71, ff: 61, kp: 68, hr: 86 },
+    { name: "living-skull", str: 68, ff: 58, kp: 63, hr: 89 },
+    { name: "miss-vampire", str: 70, ff: 60, kp: 65, hr: 87 },
+    { name: "frankenstein", str: 85, ff: 75, kp: 82, hr: 75 },
+    { name: "alien", str: 68, ff: 58, kp: 65, hr: 97 },
+    { name: "fire-demon", str: 71, ff: 61, kp: 66, hr: 77 },
+    { name: "creature-lagoon", str: 76, ff: 66, kp: 73, hr: 79 },
+    { name: "cyclops", str: 84, ff: 74, kp: 79, hr: 74 },
+    { name: "zetan-priest", str: 94, ff: 84, kp: 91, hr: 95 },
+    { name: "death", str: 99, ff: 89, kp: 95, hr: 100 },
+    { name: "jailer", str: 69, ff: 59, kp: 66, hr: 69 },
+    { name: "devil-priest", str: 92, ff: 82, kp: 89, hr: 92 },
+    { name: "killer-rat", str: 70, ff: 60, kp: 67, hr: 79 },
+    { name: "zoltan", str: 82, ff: 72, kp: 77, hr: 84 },
+    { name: "lizard-man", str: 83, ff: 73, kp: 80, hr: 81 },
+    { name: "martian-warrior", str: 80, ff: 70, kp: 75, hr: 72 },
+    { name: "terror-of-the-deep", str: 77, ff: 67, kp: 72, hr: 72 },
+    { name: "venusian-death-cell", str: 79, ff: 69, kp: 74, hr: 98 },
+    { name: "the-mummy", str: 86, ff: 76, kp: 81, hr: 80 },
+    { name: "the-fiend", str: 81, ff: 71, kp: 78, hr: 80 },
+    { name: "talon", str: 72, ff: 62, kp: 67, hr: 76 },
+    { name: "dr-syn", str: 73, ff: 63, kp: 68, hr: 73 },
+    { name: "living-gargoyle", str: 72, ff: 62, kp: 69, hr: 85 },
+    { name: "the-sorceror", str: 75, ff: 65, kp: 72, hr: 83 },
+    { name: "diablo", str: 74, ff: 64, kp: 69, hr: 78 },
+    { name: "hunchback-notre-dame", str: 75, ff: 65, kp: 72, hr: 68 },
+    { name: "high-priestess-zoltan", str: 69, ff: 59, kp: 66, hr: 82 },
+    { name: "creature-outer-space", str: 79, ff: 69, kp: 76, hr: 78 },
 ]
 
 //shuffles the deck: Fisher Yates method, copied from W3 schools
-for (let i = deck.length - 1; i > 0; i--) {
+function shuffle() {
+    for (let i = deck.length - 1; i > 0; i--) {
     let j = Math.floor(Math.random() * (i + 1));
     let k = deck[i];
     deck[i] = deck[j];
     deck[j] = k;
 }
+}
+
 
 //creates (empty) hands for up to 4 players, strings for names, default no of active players = 2
 const player1Hand = [];
@@ -66,15 +69,65 @@ let winningPlayer = 0;
 let noOfPlayers = 0;
 let playersOut = 0;
 
+//starts a new game after the old game ends
+function reStart() {
+    if (player1Hand.length > 0) {
+            while (player1Hand.length > 0) {
+            deck.push(player1Hand.pop());
+        }
+    }
+    if (player2Hand.length > 0) {
+        while (player2Hand.length > 0) {
+            deck.push(player2Hand.pop());
+        }
+    }
+    if (player3Hand.length > 0) {
+        while (player3Hand.length > 0) {
+            deck.push(player3Hand.pop());
+        }
+    }
+    if (player4Hand.length > 0) {
+        while (player4Hand.length > 0) {
+            deck.push(player4Hand.pop());
+        }
+    }
+    if (rolloverCards.length > 0) {
+        while (rolloverCards.length > 0) {
+            deck.push(rolloverCards.pop());
+        }
+    }
+    activePlayer = player1Hand;
+    p1isOut = false;
+    p2isOut = false;
+    p3isOut = true;
+    p4isOut = true;
+    isDraw = false;
+    playersOut = 0;
+    document.getElementById("end-msg").innerHTML = "";
+    document.getElementById("head").style.display = "block";
+    document.getElementById("cards").style.display = "grid";
+    document.getElementById("ps").style.display = "block";
+    document.getElementById("ff").style.display = "block";
+    document.getElementById("kp").style.display = "block";
+    document.getElementById("hr").style.display = "block";
+    document.getElementById("new-game").style.display = "none";
+    document.getElementById("button-holder").style.gridColumn = "2 / 3";
+    document.getElementById("p2cards").setAttribute("src", "");
+    document.getElementById("p3cards").setAttribute("src", "");
+    document.getElementById("p4cards").setAttribute("src", "");
+    initiate();
+}
+
 //requests number of players when start button clicked
 function initiate() {
     /*js code for form and button approach, if used later
     document.getElementById("players").style.display = "block";
     document.getElementById("lbl").style.display = "block";
     document.getElementById("confirm").style.display = "block"; */
-    noOfPlayers = parseInt(prompt("How many players (2, 3 or 4)?"));
+    input = prompt("How many players (2, 3 or 4)?");
     //checks valid number of players entered and records player names
-    if (noOfPlayers > 1 && noOfPlayers < 5) {
+    if (parseInt(input) > 1 && parseInt(input) < 5) {
+        noOfPlayers = parseInt(input);
         document.getElementById("start").style.display = "none";
         player1 = prompt("Enter name of player 1");
         player2 = prompt("Enter name of player 2");
@@ -86,7 +139,8 @@ function initiate() {
             player4 = prompt("Enter name of player 4");
             p4isOut = false;
         }
-        //deals the cards to 2-4 players
+        //shuffles and deals the cards to 2-4 players
+        shuffle();
         while (deck.length > 0) {
             player1Hand.push(deck.pop());
             if (deck.length === 0) { break; }
@@ -99,11 +153,14 @@ function initiate() {
             player4Hand.push(deck.pop());
         };
         //adjusts grid depending on no of players
-        if (noOfPlayers === 3) {
-            document.getElementById("cards").style.gridTemplateColumns = "0.5fr 1fr 1fr 1fr 0.5fr";
+        if (noOfPlayers === 2) {
+            document.getElementById("cards").style.gridTemplateColumns = "0.2fr 1fr 1fr 0.2fr";
+        }
+        else if (noOfPlayers === 3) {
+            document.getElementById("cards").style.gridTemplateColumns = "0.2fr 1fr 1fr 1fr 0.2fr";
         }
         else if (noOfPlayers === 4) {
-            document.getElementById("cards").style.gridTemplateColumns = "0.5fr 1fr 1fr 1fr 1fr 0.5fr";
+            document.getElementById("cards").style.gridTemplateColumns = "0.2fr 1fr 1fr 1fr 1fr 0.2fr";
         }
         //starts the game
         document.getElementById("head").innerHTML = player1 + " to start! Choose a category.";
@@ -113,7 +170,8 @@ function initiate() {
         document.getElementById("kp").style.display = "block";
         document.getElementById("hr").style.display = "block";
     }
-    else if (noOfPlayers !== null) {
+    else if (input === null) {return;}
+    else {
         alert("Please enter a numeral from 2-4.");
         initiate();
     }
@@ -224,7 +282,6 @@ function draw() {
     }
     checkDefeat();
     nextTurn();
-
 }
 
 //start new turn
@@ -328,7 +385,7 @@ function endGame(winner) {
     document.getElementById("kp").style.display = "none";
     document.getElementById("hr").style.display = "none";
     document.getElementById("end-msg").innerHTML = winner + " obliterated the oppositon BRUTALLY.";
-    document.getElementById("start").style.display = "block";
+    document.getElementById("new-game").style.display = "block";
 }
 
 //check to see if any player is down to 0 cards and/or the game is over
@@ -443,6 +500,9 @@ function turnResult() {
 
 //click to start
 document.getElementById("start").addEventListener("click", initiate);
+
+//click to play again
+document.getElementById("new-game").addEventListener("click", reStart);
 
 //retrieves values (HR) for compare function
 function gethrValues() {

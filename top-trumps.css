@@ -1,5 +1,7 @@
 *{
     font-family: "Metal Mania";
+    box-sizing: border-box;
+    max-width: 99vw;
 }
 
 body {
@@ -16,9 +18,10 @@ body {
     width: 15vw;
     height: 5vh;
     padding: 0.2rem;
-    margin-left: 0.8rem;
     font-size: 2rem;
     font-weight: bold;
+    justify-self: center;
+    align-self: center;
 }
 
 .selector:hover {
@@ -31,13 +34,7 @@ body {
     font-size: 3rem;
 }
 
-.centred {
-    display: flex;
-    margin-top: 30vh;
-    justify-content: center;
-}
-
-#start {
+.strt-btn {
     width: 12vw;
     height: 7vw;
     font-size: 3rem;
@@ -46,12 +43,16 @@ body {
     border: 0.2rem solid rgb(3, 3, 43);
     cursor: pointer;
     border-radius: 0.5rem;
+    position: absolute;
+    top: 45vh;
+    bottom: 45vh;
+    left:43vw;
+    right: 45vw;
 }
 
 #display-area {
     position: absolute;
     top: 2rem;
-    width: 100vw;
 }
 
 #button-holder {
@@ -65,18 +66,22 @@ body {
 
 #p1cards {
     grid-column: 2 / 3;
+    justify-self: center;
 }
 
 #p2cards {
     grid-column: 3 / 4;
+    justify-self: center;
 }
 
 #p3cards {
     grid-column: 4 / 5;
+    justify-self: center;
 }
 
 #p4cards {
     grid-column: 5 / 6;
+    justify-self: center;
 }
 
 #end-msg {
@@ -89,10 +94,9 @@ body {
 }
 
 #cards {
+    width: 100vw;
     display: grid;
-    grid-template-columns: 0.5fr 1fr 1fr 0.5fr;
     gap: 1rem;
-    justify-content: center;
 }
 
 #cont-button {
@@ -109,4 +113,8 @@ body {
 
 #cont-button:hover {
     background-color: lightgreen;
+}
+
+#new-game {
+    display: none;
 }
