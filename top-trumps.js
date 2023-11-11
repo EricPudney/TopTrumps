@@ -44,7 +44,6 @@ function shuffle() {
 }
 }
 
-
 //creates (empty) hands for up to 4 players, strings for names, default no of active players = 2
 const player1Hand = [];
 const player2Hand = [];
@@ -120,10 +119,6 @@ function reStart() {
 
 //requests number of players when start button clicked
 function initiate() {
-    /*js code for form and button approach, if used later
-    document.getElementById("players").style.display = "block";
-    document.getElementById("lbl").style.display = "block";
-    document.getElementById("confirm").style.display = "block"; */
     input = prompt("How many players (2, 3 or 4)?");
     //checks valid number of players entered and records player names
     if (parseInt(input) > 1 && parseInt(input) < 5) {
@@ -259,7 +254,7 @@ function compare(a, b, c, d) {
     document.getElementById("button-holder").style.display = "none";
 }
 
-//deals with a draw following compare () function
+//deals with a draw following compare function
 function draw() {
     isDraw = false;
     cardPile();
@@ -419,7 +414,6 @@ function checkDefeat() {
                 if (p1isOut === false) { endGame(player1); }
                 else if (p2isOut === false) { endGame(player2); }
                 else if (p3isOut === false) { endGame(player3); }
-                else { console.log("Error in determining winner."); }
             }
             break;
         case 4:
@@ -451,10 +445,8 @@ function checkDefeat() {
                 else if (p2isOut === false) { endGame(player2); }
                 else if (p3isOut === false) { endGame(player3); }
                 else if (p4isOut === false) { endGame(player4); }
-                else { console.log("Error in determining winner."); }
             }
             break;
-        default: console.log("Error - noOfPlayers issue");
     }
 }
 
@@ -510,12 +502,10 @@ function gethrValues() {
     const p2 = (player2Hand.length > 0) ? player2Hand[0].hr : 0;
     const p3 = (player3Hand.length > 0) ? player3Hand[0].hr : 0;
     const p4 = (player4Hand.length > 0) ? player4Hand[0].hr : 0;
-    console.log(p1, p2, p3, p4);
     val1 = p1;
     val2 = p2;
     val3 = p3;
     val4 = p4;
-    console.log(val1, val2, val3, val4);
 }
 
 //retrieves values (FF) for compare function
@@ -524,12 +514,10 @@ function getffValues() {
     const p2 = (player2Hand.length > 0) ? player2Hand[0].ff : 0;
     const p3 = (player3Hand.length > 0) ? player3Hand[0].ff : 0;
     const p4 = (player4Hand.length > 0) ? player4Hand[0].ff : 0;
-    console.log(p1, p2, p3, p4);
     val1 = p1;
     val2 = p2;
     val3 = p3;
     val4 = p4;
-    console.log(val1, val2, val3, val4);
 }
 
 //retrieves values (PS) for compare function
@@ -538,12 +526,10 @@ function getpsValues() {
     const p2 = (player2Hand.length > 0) ? player2Hand[0].str : 0;
     const p3 = (player3Hand.length > 0) ? player3Hand[0].str : 0;
     const p4 = (player4Hand.length > 0) ? player4Hand[0].str : 0;
-    console.log(p1, p2, p3, p4);
     val1 = p1;
     val2 = p2;
     val3 = p3;
     val4 = p4;
-    console.log(val1, val2, val3, val4);
 }
 
 //retrieves values (KP) for compare function
@@ -552,10 +538,8 @@ function getkpValues() {
     const p2 = (player2Hand.length > 0) ? player2Hand[0].kp : 0;
     const p3 = (player3Hand.length > 0) ? player3Hand[0].kp : 0;
     const p4 = (player4Hand.length > 0) ? player4Hand[0].kp : 0;
-    console.log(p1, p2, p3, p4);
     val1 = p1;
     val2 = p2;
     val3 = p3;
     val4 = p4;
-    console.log(val1, val2, val3, val4);
 }
